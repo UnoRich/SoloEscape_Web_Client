@@ -8,6 +8,7 @@ class SignIn extends Component {
         this.SignOut = this.SignOut.bind(this);
         this.SignIn = this.SignIn.bind(this);
     }
+
     SignIn(userProfile, accessToken) {
         console.log(userProfile)
     }
