@@ -15,18 +15,34 @@ const styles = theme => ({
     },
 });
 
-class SoloItemComponent extends Component {
-    render() {
+const Partners = ({
+    partners,
+  }) => {
+    return (partners && partners.map) 
+      ? partners.map((partner, idx) => {
         return (
-            <ListItem { ...this.props }>
-                <Avatar alt="Remy Sharp" src="http://www.pickywallpapers.com/2560x1600/female-celebrities/emma-watson/emma-watson-black-and-white-profile-wallpaper/download/?get" />
-                <ListItemText primary={`zzz`} />
+            <ListItem key={idx}>
+                <Avatar alt={partner.name} src="http://www.pickywallpapers.com/2560x1600/female-celebrities/emma-watson/emma-watson-black-and-white-profile-wallpaper/download/?get" />
+                <ListItemText primary={partner.name} />
                 <ListItemSecondaryAction>
                     <Button fab mini color="primary" aria-label="favorite">
                         <FavoriteIcon />
                     </Button>
                 </ListItemSecondaryAction>
-            </ListItem>            
+            </ListItem>    
+        );
+      })
+      : null;
+  }
+
+class SoloItemComponent extends Component {
+    constructor(props){
+        super(props);
+    }
+
+    render() {
+        return (
+            <Partners partners={this.props.partners}/>        
         );
     }
 }
