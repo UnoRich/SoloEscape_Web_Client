@@ -1,24 +1,24 @@
 import axios from 'axios';
 
-export function getTag(args) {
+export async function getTag(args) {
   return axios.get('http://localhost:4000/tag', {
     ...args,
   })
-  .then( response => { console.log(response); } )
+  .then( response => { return response } )
 }
 
-export function getGoogleUser(args) {
+export async function getGoogleUser(args) {
   return axios.get('http://localhost:4000/googleuser', {
     ...args,
   })
-  .then( response => { console.log(response); } )
+  .then( response => { return response } )
 }
 
-export function getLocalUser(args) {
+export async function getLocalUser(args) {
   return axios.get('http://localhost:4000/googleuser', {
     ...args,
   })
-  .then( response => { console.log(response); } )
+  .then( response => { return response } )
 }
 
 export function getProfileById(args) {
