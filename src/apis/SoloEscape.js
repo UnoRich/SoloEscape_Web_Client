@@ -1,20 +1,20 @@
 import axios from 'axios';
 
-export async function getTag(args) {
+export function getTag(args) {
   return axios.get('http://localhost:4000/tag', {
     ...args,
   })
   .then( response => { return response } )
 }
 
-export async function getGoogleUser(args) {
+export function getGoogleUser(args) {
   return axios.get('http://localhost:4000/googleuser', {
     ...args,
   })
   .then( response => { return response } )
 }
 
-export async function getLocalUser(args) {
+export function getLocalUser(args) {
   return axios.get('http://localhost:4000/googleuser', {
     ...args,
   })
