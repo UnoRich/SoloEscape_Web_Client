@@ -30,20 +30,22 @@ const Partners = ({
             const Img = new Image(200, 200);
             Img.src = objurl;
        
-       if(partner.name.includes(textInputValue))
-          res.push(
-            <ListItem key={idx}>
-                <Avatar alt={partner.name} src={objurl} />
-                <ListItemText primary={partner.name} />
-                <ListItemSecondaryAction>
-                    <Button fab mini color="primary" aria-label="favorite">
-                        <FavoriteIcon />
-                    </Button>
-                </ListItemSecondaryAction>
-            </ListItem>    
-        );
-       else
-       ;
+        if (partner.name.includes(textInputValue)) {
+            res.push(
+                <ListItem key={idx}>
+                    <Avatar alt={partner.name} src={objurl} />
+                    <ListItemText primary={partner.name} />
+                    <ListItemSecondaryAction>
+                        <Button fab mini color="primary" aria-label="favorite">
+                            <FavoriteIcon />
+                        </Button>
+                    </ListItemSecondaryAction>
+                </ListItem>
+            )   
+        }
+        else {
+           // do nothing
+        }
         return res;
       }, [])
       : null;
