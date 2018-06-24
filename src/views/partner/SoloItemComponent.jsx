@@ -18,6 +18,7 @@ const styles = theme => ({
 const Partners = ({
     partners,
     profiles,
+    textInputValue,
   }) => {
     
     return (partners && partners.map && profiles && profiles.map) 
@@ -28,7 +29,9 @@ const Partners = ({
             var objurl = window.URL.createObjectURL(new Blob([new Uint8Array(findMatchedProfile(partner.id, profiles).data[0].picture.data)], { type: "image/gif" }));
             const Img = new Image(200, 200);
             Img.src = objurl;
-        res.push(
+       
+       if(partner.name.includes(textInputValue))
+          res.push(
             <ListItem key={idx}>
                 <Avatar alt={partner.name} src={objurl} />
                 <ListItemText primary={partner.name} />
@@ -39,6 +42,8 @@ const Partners = ({
                 </ListItemSecondaryAction>
             </ListItem>    
         );
+       else
+       ;
         return res;
       }, [])
       : null;
@@ -63,7 +68,7 @@ class SoloItemComponent extends Component {
 
     render() {
         return (
-            <Partners partners={this.props.partners} profiles={this.props.profiles} />        
+            <Partners partners={this.props.partners} profiles={this.props.profiles} textInputValue={this.props.textInputValue} />        
         );
     }
 }

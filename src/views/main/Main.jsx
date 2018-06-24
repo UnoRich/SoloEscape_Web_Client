@@ -8,7 +8,6 @@ const styles = {
   textAlign: 'center',
 };
 
-
 const insideStyles = {background: 'white', padding: 20, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)'};
 const image1 = require('./coupleimg1.jpg');
 const image2 = require('./coupleimg2.jpg');
@@ -51,6 +50,5 @@ class Main extends Component {
     )
   }
 }
-
 
 export default Main;

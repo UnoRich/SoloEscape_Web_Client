@@ -3,14 +3,24 @@ import PropTypes from 'prop-types';
 import SoloList from './SoloList';
 import SoloItem from './SoloItem';
 import * as SoloAPI from '../../apis/SoloEscape.js'
+import SearchBar from 'material-ui-search-bar'
+
 
 class Main extends Component {
     constructor(props){
         super(props);
         this.state = {
             partners: {},
-            profiles: {},
-        }
+            profiles: {}, 
+            textInputValue: '', 
+        };   
+    }
+
+
+    handleInputChange(e)  {
+        this.setState({
+            textInputValue: e
+        });
     }
 
     async componentDidMount() {
@@ -37,6 +47,14 @@ class Main extends Component {
     render() {
         return ( 
             <div>
+            <SearchBar
+            value={this.state.textInputValue} onChange={(e) => {this.handleInputChange(e)}}
+            onRequestSearch={() => console.log('onRequestSearch')}
+            style={{
+                margin: '0 auto',
+                flex: '1'
+                }}
+            />
                 <SoloList>
                     <SoloItem {...this.state}/>
                 </SoloList>
