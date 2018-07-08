@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Button, Card, CardText, CardTitle, CardActions, CardMenu, IconButton, Textfield } from 'react-mdl';
 import * as blueimp from 'blueimp-load-image';
 
+import * as API from '../../apis/SoloEscape'
+
 class Profile extends Component {
   constructor(...props) {
     super(...props);
@@ -9,6 +11,9 @@ class Profile extends Component {
     this._handleImageLoad = this._handleImageLoad.bind(this);
     this._handleClickSave = this._handleClickSave.bind(this);
     this._handleClickCancel = this._handleClickCancel.bind(this);
+    this.state = {
+      img: Blob,
+    }
   }
   
 
@@ -25,15 +30,17 @@ class Profile extends Component {
   }
 
   _handleImageLoad(e) {
-    console.log("image Load");
-    var loadingImage = blueimp(
+    let data = new FormData();
+    console.log("image Load", e.target.files[0]);
+    const loadingImage = blueimp(
       e.target.files[0],
       function (img) {
-        console.log("img", img.src)
-          document.getElementById("profileImage").appendChild(img);
+        document.getElementById("profileImage").appendChild(img);
       },
       {maxWidth: 256}
-  );
+    );
+    data.append('file', e.target.files[0])
+    API.saveProfile(data);
   }
   
 

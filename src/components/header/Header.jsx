@@ -14,6 +14,7 @@ import 'typeface-roboto';
 import { Link } from 'react-router-dom';
 import history from '../../history'
 import { Button } from 'react-mdl';
+import * as SoloAPI from '../../apis/SoloEscape.js'
 
 
 
@@ -71,8 +72,9 @@ class Header extends Component {
       history.push('/partner');
   };
 
-  hanleLoginClick = (index) => {
+   hanleLoginClick = async (index) => {
    if(index)
+   const res = await SoloAPI.signIn();
    this.setState({ visible: false });   
   };
 

@@ -10,6 +10,7 @@ class SignIn extends Component {
     }
 
     SignIn(userProfile, accessToken) {
+        // request signin API
         console.log(userProfile)
     }
     
@@ -23,7 +24,7 @@ class SignIn extends Component {
           <div>
                 <GoogleSignIn clientId="680107599193-4egd5q12p1ijqor26eh0ucj369fjf037"
                       ref={g => this.googleAuth = g}
-                      onSuccess={this.SignIn}/>             
+                      onSuccess={this.SignIn}/>
                 <button onClick={this.SignOut}> Sign Out </button>  
           </div>
         );    
